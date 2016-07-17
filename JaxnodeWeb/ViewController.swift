@@ -7,12 +7,35 @@
 //
 
 import UIKit
+import WebKit
 
 class ViewController: UIViewController {
 
+    //@IBOutlet weak var myUIWebView: WKWebView!
+    private var webView: WKWebView?
+    
+    override func loadView() {
+        webView = WKWebView()
+        
+        //If you want to implement the delegate
+        //webView?.navigationDelegate = self
+        
+        view = webView
+        //view.topAnchor.constraintEqualToAnchor(self.topLayoutGuide.bottomAnchor, constant: 20).active = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if let url = NSURL(string: "https://www.jaxnode.com") {
+            let req = NSURLRequest(URL: url)
+            webView?.loadRequest(req)
+        }
+//        let myURLstr = "https://www.jaxnode.com"
+//        let myURL = NSURL.init(string: myURLstr)
+//        let myURLRequest = NSURLRequest.init(URL: myURL!)
+//        myWebView.loadRequest(myURLRequest)
+        
     }
 
     override func didReceiveMemoryWarning() {
