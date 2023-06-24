@@ -27,15 +27,10 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let url = NSURL(string: "https://www.jaxnode.com") {
-            let req = NSURLRequest(URL: url)
-            webView?.loadRequest(req)
+        if let url = URL(string: "https://www.jaxnode.com") {
+            let req = URLRequest(url: url)
+            webView?.load(req)
         }
-//        let myURLstr = "https://www.jaxnode.com"
-//        let myURL = NSURL.init(string: myURLstr)
-//        let myURLRequest = NSURLRequest.init(URL: myURL!)
-//        myWebView.loadRequest(myURLRequest)
-        
     }
 
     override func didReceiveMemoryWarning() {
